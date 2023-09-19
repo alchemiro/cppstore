@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "g++", // Use "g++" for GCC on Linux/macOS or "clang++" for Clang.
+      "args": ["-g", "main.cpp", "-o", "main"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
