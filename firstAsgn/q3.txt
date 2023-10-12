@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string* Split(string str, int& size) {
+    size = 0;
+    for (char c : str) {
+        if (c == ' ') {
+            size++;
+        }
+    }
+    size++;
+    string* words = new string[size];
+    int wordPtr = 0;
+    string word = "";
+    for (char c : str) {
+        if (c == ' ') {
+            words[wordPtr] = word;
+            word = "";
+            wordPtr++;
+        }
+        else {
+            word += c;
+        }
+    }
+    words[wordPtr] = word;
+    return words;
+}
+
+string multi(string word)
+{
+    return word.append(word);
+}
+
+int main() {
+    string str = "lion otter crow owl moth";
+    string* words{};
+    int size;
+
+    words = Split(str, size);
+
+    cout << "the words in the string: " << endl;
+    for (int i = 0; i < size; i++) {
+        cout << words[i] << endl;
+    }
+    cout << "now twice: " << endl;
+    for (int i = 0; i < size; i++) {
+        cout << multi(words[i]) << endl;
+    }
+
+    delete[] words;
+
+    return 0;
+}

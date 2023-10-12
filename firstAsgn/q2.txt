@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool IsArithmeticProgression(int* arr, int size = 3) {
+    int i = 0;
+    while (i < size - 1 && (arr[1] - arr[0]) == (arr[++i] - arr[i - 1]));
+    return i == size - 1;
+}
+
+bool IsArithmeticProgression(char* arr, int size = 3) {
+    int i = 0;
+    while (i < size - 1 && (arr[1] - arr[0]) == (arr[++i] - arr[i - 1]));
+    return i == size - 1;
+}
+
+int main() {
+    int size;//define int
+    cout << "input size: (int array)";
+    cin >> size; //get int from user blyat
+
+    if (size < 3) {
+        size = 3;
+    };
+
+    int* arr = new int[size];
+
+    for (int i = 0; i < size; i++) {
+        cin >> *arr;
+        arr++;
+    }
+    arr -= size;
+
+    int sizeChar;//define int
+    cout << "input size: (char array)";
+    cin >> sizeChar; //get int from user blyat
+
+    if (sizeChar < 3) {
+        sizeChar = 3;
+    };
+
+    char* numberChar = new char[sizeChar];
+
+    for (int i = 0; i < sizeChar; i++) {
+        cin >> *numberChar;
+        numberChar++;
+    }
+    numberChar -= sizeChar;
+
+
+
+    cout << "Value is: " << IsArithmeticProgression(arr, size) << endl; //question 2a
+    cout << "Value is: " << IsArithmeticProgression(numberChar, sizeChar) << endl; //question 2b
+	return 0;
+}
